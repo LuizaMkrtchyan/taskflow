@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskflow_dev
+    username: postgres
+    password: 13LM96lL
+
+  jpa:
+    hibernate:
+      ddl-auto: update
