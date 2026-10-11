@@ -21,8 +21,13 @@ public class Project {
     @JoinColumn(name="created_by_id",nullable=false)
     private User createdBy;
 
-    @Column(nullable=false)
+    @Column(nullable=false, updatable=false)
     private LocalDateTime createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
 
     public Project() {
 
