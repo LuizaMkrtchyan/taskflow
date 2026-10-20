@@ -1,7 +1,7 @@
 package com.taskflow.backend.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="comments")
@@ -22,7 +22,7 @@ public class Comment {
     private String content;
 
     @Column(nullable = false)
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     public Comment(){
 
@@ -58,11 +58,11 @@ public class Comment {
     {
         this.content = content;
     }
-    public LocalDate getCreatedAt()
+    public LocalDateTime getCreatedAt()
     {
         return createdAt;
     }
-    public void setCreatedAt(LocalDate createdAt)
+    public void setCreatedAt(LocalDateTime createdAt)
     {
         this.createdAt = createdAt;
     }
