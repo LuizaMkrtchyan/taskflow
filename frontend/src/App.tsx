@@ -1,4 +1,3 @@
-
 import {
   BrowserRouter,
   Navigate,
@@ -12,6 +11,7 @@ import { useAuth } from "./context/AuthContext";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Projects from "./pages/Projects";
+import ProjectBoard from "./pages/ProjectBoard";
 
 function ProtectedRoute({
   children,
@@ -54,7 +54,14 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
-
+      <Route
+        path="/projects/:projectId"
+        element={
+          <ProtectedRoute>
+            <ProjectBoard />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="*"
         element={<Navigate to="/" replace />}

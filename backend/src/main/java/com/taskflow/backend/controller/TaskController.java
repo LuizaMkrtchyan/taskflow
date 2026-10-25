@@ -56,4 +56,14 @@ public class TaskController {
                 authentication
         );
     }
+
+    @DeleteMapping("/tasks/{taskId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteTask(
+            @PathVariable Long taskId,
+            Authentication authentication
+    ) {
+        taskService.deleteTask(taskId, authentication);
+    }
+
 }

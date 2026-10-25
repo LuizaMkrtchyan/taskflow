@@ -124,6 +124,23 @@ public class TaskService {
         return toTaskResponse(updatedTask);
     }
 
+    public void deleteTask(
+            Long taskId,
+            Authentication authentication
+    ) {
+        User currentUser = getAuthenticatedUser(authentication);
+
+        Task task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Task not found"
+                ));
+
+        checkProjectOwnership(task.getProject(), currentUser);
+
+        taskRepository.delete(task);
+    }
+
     private User getAuthenticatedUser(
             Authentication authentication
     ) {

@@ -1,6 +1,6 @@
-
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
@@ -141,8 +141,14 @@ export default function Projects() {
         ) : (
           projects.map((project) => (
             <article key={project.id}>
-              <h4>{project.name}</h4>
+              <h4>
+                <Link to={`/projects/${project.id}`}>
+                  {project.name}
+                </Link>
+              </h4>
+
               <p>{project.description}</p>
+              <p className="project-open-hint">Open project board →</p>
             </article>
           ))
         )}
